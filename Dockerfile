@@ -1,8 +1,10 @@
 FROM alpine:latest
 WORKDIR /root
-RUN apk update && apk add --no-cache pkgconfig python-dev py-numpy go libc-dev glib
-ENV PYTHONPATH /root
 ADD . /root/
+RUN apk update && apk add --no-cache pkgconfig python-dev py-numpy go libc-dev glib && \
+rm -rf /var/cache/apk/* /usr/lib/go/src /root/.git
+
+ENV PYTHONPATH /root
 
 RUN go version && pkg-config --libs --cflags python-2.7 && python condd.py
 
