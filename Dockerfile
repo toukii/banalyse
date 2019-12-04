@@ -2,7 +2,7 @@ FROM alpine:latest
 WORKDIR /root
 ADD . /root/
 RUN apk update && apk add --no-cache pkgconfig python-dev py-numpy go libc-dev glib && \
-rm -rf /var/cache/apk/* /usr/lib/go/src /root/.git
+rm -rf /var/cache/apk/* /root/.git
 
 ENV PYTHONPATH /root
 
