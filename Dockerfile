@@ -1,11 +1,10 @@
-FROM alpine:latest
+FROM python:3.6-alpine
+
 WORKDIR /root
-ADD . /root/
-RUN apk update && apk add --no-cache pkgconfig python-dev py-numpy go libc-dev glib && \
-rm -rf /var/cache/apk/* /root/.git
+ADD . /root
+ENV PYTHONPATH=/root
 
-ENV PYTHONPATH /root
-
-RUN go version && pkg-config --libs --cflags python-2.7 && python condd.py
-
-CMD ["sh"]
+RUN apk add gcc \
+  && pip install numpy==1.13.3 \
+  && rm -rf /var/cache/apk/* \
+  && python condd.py
