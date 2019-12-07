@@ -1,3 +1,4 @@
 .ash_history
 .cache/
 vendor/
+pyscripts/__pycache__/

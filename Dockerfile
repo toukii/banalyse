@@ -3,6 +3,7 @@ FROM python:3.6-alpine
 WORKDIR /root
 ADD ./pyscripts /root
 ENV PYTHONPATH=/root/pyscripts
+ENV GOPATH=/go
 
 RUN apk add g++ \
   && pip install numpy==1.13.3 \
